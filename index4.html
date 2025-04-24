@@ -222,6 +222,149 @@
                 font-size: 1rem;
             }
         }
+
+        /* Tambahkan ini di bagian bawah CSS Anda, setelah media query yang sudah ada */
+
+/* Tablet Landscape */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    
+    .hero-content p {
+        max-width: 600px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .footer-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+    /* Tablet Portrait */
+    @media (max-width: 768px) {
+        .header-container {
+            padding: 15px 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 2.2rem;
+            padding: 0 20px;
+        }
+        
+        .hero-content p {
+            padding: 0 20px;
+        }
+        
+        section {
+            margin-bottom: 40px;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+        }
+        
+        .gallery {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        }
+        
+        ul {
+            columns: 1;
+        }
+    }
+    
+    /* Smartphone Landscape */
+    @media (max-width: 640px) {
+        nav ul li {
+            margin-left: 15px;
+        }
+        
+        .hero-content h1 {
+            font-size: 2rem;
+        }
+        
+        .btn {
+            padding: 10px 25px;
+        }
+        
+        .container {
+            padding: 40px 15px;
+        }
+    }
+    
+    /* Smartphone Portrait */
+    @media (max-width: 480px) {
+        .logo {
+            height: 50px;
+        }
+        
+        nav ul {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        nav ul li {
+            margin: 5px 10px;
+        }
+        
+        .hero {
+            padding-top: 80px;
+        }
+        
+        .hero-content h1 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .hero-content p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+        
+        .gallery {
+            grid-template-columns: 1fr;
+        }
+        
+        .gallery-item img {
+            height: 200px;
+        }
+        
+        .footer-container {
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .footer-column {
+            margin-bottom: 20px;
+        }
+        
+        .copyright {
+            margin-top: 30px;
+        }
+    }
+    
+    /* Very Small Screens */
+    @media (max-width: 360px) {
+        .hero-content h1 {
+            font-size: 1.5rem;
+        }
+        
+        .hero-content p {
+            font-size: 0.9rem;
+        }
+        
+        .btn {
+            padding: 8px 20px;
+            font-size: 0.9rem;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+        }
+    }
     </style>
 </head>
 <body>
