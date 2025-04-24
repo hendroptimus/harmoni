@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BATU ITAM HARMONI - Wisata Budaya & Maritim</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            height: 60px;
+            transition: all 0.3s ease;
+        }
+        
+        /* Navigation Styles */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        nav ul li a {
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+            padding: 5px 0;
+        }
+        
+        nav ul li a:hover {
+            color: #0077b6;
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #0077b6;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 101;
+        }
+        
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: #333;
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        
+        .hamburger span:nth-child(1) {
+            top: 0;
+        }
+        
+        .hamburger span:nth-child(2), 
+        .hamburger span:nth-child(3) {
+            top: 10px;
+        }
+        
+        .hamburger span:nth-child(4) {
+            top: 20px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #0077b6;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s;
+            animation: fadeIn 1.5s ease;
+            border: 2px solid transparent;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            border-color: white;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        section {
+            margin-bottom: 80px;
+        }
+        
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #0077b6;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: #0077b6;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        /* Gallery Section */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            padding: 20px;
+        }
+        
+        .gallery-caption h3 {
+            color: #0077b6;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .gallery-caption p {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* Activities Section */
+        .activities {
+            background-color: #f0f8ff;
+            padding: 60px 0;
+            border-radius: 10px;
+        }
+        
+        .activities-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .activities-list {
+            columns: 2;
+            list-style-position: inside;
+            margin: 30px 0;
+        }
+        
+        .activities-list li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #444;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .activities-list li::before {
+            content: '✓';
+            color: #0077b6;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #fff;
+            padding: 60px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 60px;
+            color: rgba(0, 119, 182, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #0077b6;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 70px 0 20px;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            padding: 0 20px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #0077b6;
+        }
+        
+        .footer-column p {
+            color: #bbb;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #0077b6;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: #0077b6;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        /* Tablet Landscape */
+        @media (max-width: 1024px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content p {
+                max-width: 600px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .footer-container {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+        
+        /* Tablet Portrait */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 15px 20px;
+            }
+            
+            .logo {
+                height: 50px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+                padding: 0 20px;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+                padding: 0 20px;
+            }
+            
+            section {
+                margin-bottom: 60px;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .activities-list {
+                columns: 1;
+            }
+        }
+        
+        /* Smartphone Landscape */
+        @media (max-width: 640px) {
+            nav ul {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+            }
+            
+            .container {
+                padding: 60px 15px;
+            }
+        }
+        
+        /* Smartphone Portrait */
+        @media (max-width: 480px) {
+            /* Mobile Menu Styles */
+            nav.active ul {
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                z-index: 100;
+                padding: 100px 20px 20px;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            nav.active ul li {
+                margin: 15px 0;
+                padding: 15px 0;
+                border-bottom: 1px solid #eee;
+                width: 100%;
+                text-align: center;
+            }
+            
+            nav.active ul li a {
+                font-size: 1.2rem;
+            }
+            
+            /* Hamburger Animation */
+            .hamburger.active span:nth-child(1) {
+                top: 10px;
+                width: 0%;
+                left: 50%;
+            }
+            
+            .hamburger.active span:nth-child(2) {
+                transform: rotate(45deg);
+            }
+            
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(-45deg);
+            }
+            
+            .hamburger.active span:nth-child(4) {
+                top: 10px;
+                width: 0%;
+                left: 50%;
+            }
+            
+            .hero {
+                padding-top: 80px;
+            }
+            
+            .hero-content h1 {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 20px;
+            }
+            
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-item img {
+                height: 220px;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-column {
+                margin-bottom: 30px;
+            }
+            
+            .copyright {
+                margin-top: 40px;
+            }
+        }
+        
+        /* Very Small Screens */
+        @media (max-width: 360px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+            
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+            
+            .btn {
+                padding: 8px 20px;
+                font-size: 0.9rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+            
+            .container {
+                padding: 50px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="/">
+                <img src="https://via.placeholder.com/180x60?text=Batu+Itam+Logo" alt="Pokdarwis Logo" class="logo">
+            </a>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#attractions">Atraksi</a></li>
+                    <li><a href="#shipwreck">Shipwreck</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Harmoni Batu Itam, Harmoni Budaya Maritim & Budaya Kreatif</h1>
+                <p>Menyuguhkan keindahan alam bahari yang memukau, warisan budaya maritim yang autentik, dan kreativitas masyarakat lokal yang menginspirasi dalam satu destinasi wisata yang memesona.</p>
+                <a href="#about" class="btn">Jelajahi Harmoni</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <section id="about">
+                <h2>Batu Itam Harmonik</h2>
+                <p>Batu Itam adalah sebuah destinasi wisata unggulan yang terletak di pesisir pantai dengan pemandangan laut yang memukau. Kami menawarkan pengalaman wisata yang memadukan keindahan alam, kekayaan budaya maritim, dan kreativitas lokal dalam satu paket yang harmonis.</p>
+                <p>Dengan sejarah panjang sebagai desa nelayan tradisional, Batu Itam telah berkembang menjadi pusat wisata bahari yang menawarkan berbagai atraksi unik. Dari peninggalan sejarah maritim hingga karya seni kreatif masyarakat lokal, setiap sudut Batu Itam menceritakan kisahnya sendiri.</p>
+            </section>
+
+            <section id="attractions">
+                <h2>Atraksi Unggulan</h2>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Wisata Bahari">
+                        <div class="gallery-caption">
+                            <h3>Wisata Bahari</h3>
+                            <p>Nikmati keindahan alam bawah laut dengan snorkeling atau menyelam di antara terumbu karang yang masih alami dan biota laut yang berwarna-warni.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Budaya Maritim">
+                        <div class="gallery-caption">
+                            <h3>Budaya Maritim</h3>
+                            <p>Pelajari teknik tradisional pembuatan perahu dan alat tangkap nelayan yang telah diwariskan turun-temurun oleh masyarakat pesisir Batu Itam.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Shipwreck">
+                        <div class="gallery-caption">
+                            <h3>Shipwreck</h3>
+                            <p>Jelajahi bangkai kapal kuno yang menjadi saksi bisu sejarah maritim daerah ini, sekarang menjadi rumah bagi berbagai biota laut.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="activities" id="activities">
+                <div class="activities-container">
+                    <h2>Aktivitas Wisata</h2>
+                    <p>Batu Itam menawarkan beragam aktivitas menarik untuk semua kalangan dan usia:</p>
+                    <ul class="activities-list">
+                        <li>Snorkeling & Diving</li>
+                        <li>Tour Budaya Maritim</li>
+                        <li>Workshop Pembuatan Perahu Tradisional</li>
+                        <li>Eduwisata Konservasi Laut</li>
+                        <li>Sunset Cruise dengan Perahu Nelayan</li>
+                        <li>Kuliner Seafood Khas Pesisir</li>
+                        <li>Homestay dengan Keluarga Nelayan</li>
+                        <li>Eksplorasi Desa dan Kerajinan Tangan</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="shipwreck">
+                <h2>Shipwreck Batu Itam</h2>
+                <p>Bangkai kapal kuno di perairan Batu Itam merupakan salah satu daya tarik utama wisata selam di daerah ini. Kapal yang diperkirakan berasal dari awal abad ke-20 ini menawarkan pengalaman menyelam yang unik dengan kedalaman bervariasi antara 12-25 meter, cocok untuk penyelam berbagai tingkat keahlian.</p>
+                <p>Selain menjadi habitat bagi berbagai spesies ikan dan terumbu karang, shipwreck ini juga merupakan situs arkeologi bawah air yang dilindungi. Pengunjung dapat mengikuti tur berpemandu untuk mempelajari sejarah kapal ini dan upaya konservasi yang dilakukan.</p>
+            </section>
+
+            <section class="testimonials">
+                <h2>Testimonial Pengunjung</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Pengalaman terbaik selama liburan kami! Anak-anak sangat menikmati workshop membuat perahu tradisional, sementara saya terpesona dengan keindahan bawah lautnya."</p>
+                        <p class="testimonial-author">- Andi Wijaya, Jakarta</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Budaya maritim di Batu Itam sangat autentik. Saya belajar banyak tentang kehidupan nelayan tradisional dan sejarah bahari Indonesia yang kaya."</p>
+                        <p class="testimonial-author">- Sarah Miller, Australia</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Shipwreck diving-nya luar biasa! Panduan yang profesional dan kondisi bawah laut yang terjaga membuat pengalaman menyelam tak terlupakan."</p>
+                        <p class="testimonial-author">- David Chen, Singapura</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Tentang Batu Itam</h3>
+                <p>Batu Itam adalah destinasi wisata berbasis masyarakat yang mengangkat potensi alam dan budaya maritim lokal melalui konsep pariwisata berkelanjutan.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Link Cepat</h3>
+                <ul>
+                    <li><a href="#about">Tentang Kami</a></li>
+                    <li><a href="#attractions">Atraksi Wisata</a></li>
+                    <li><a href="#activities">Paket Aktivitas</a></li>
+                    <li><a href="#shipwreck">Shipwreck Diving</a></li>
+                    <li><a href="#gallery">Gallery Foto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Kontak Kami</h3>
+                <ul>
+                    <li>Pokdarwis Batu Itam Harmoni</li>
+                    <li>Jl. Pantai Batu Itam, Desa Sijuk</li>
+                    <li>Belitung, Kepulauan Bangka Belitung</li>
+                    <li>Phone: +62 812-3456-7890</li>
+                    <li>Email: info@batuitamharmoni.id</li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Jam Operasional</h3>
+                <ul>
+                    <li>Setiap Hari: 08.00 - 17.00 WIB</li>
+                    <li>Tour Pagi: 08.00 - 12.00</li>
+                    <li>Tour Sore: 13.00 - 17.00</li>
+                    <li>Khusus Shipwreck Diving perlu reservasi minimal 1 hari sebelumnya</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2023 Pokdarwis Batu Itam Harmoni. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <script>
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const nav = document.querySelector('nav');
+            
+            hamburger.classList.toggle('active');
+            nav.classList.toggle('active');
+            
+            // Toggle body scroll when menu is open
+            if(nav.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                if(window.innerWidth <= 640) {
+                    toggleMenu();
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if(window.scrollY > 50) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.15)';
+                document.querySelector('.logo').style.height = '50px';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                document.querySelector('.logo').style.height = '60px';
+            }
+        });
+    </script>
+</body>
+</html>
